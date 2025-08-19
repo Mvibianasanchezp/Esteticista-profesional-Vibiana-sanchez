@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Magda Vibiana Sánchez Pinzón — Esteticista Profesional a Domicilio</title>
+  <!-- Tipografía (Garamond / EB Garamond como respaldo web) -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #d4af37;
+      --pink: #f8c2d1;
+      --deep-pink: #ff6fa2;
+      --black: #0a0a0a;
+      --soft-black: #111111;
+      --card-bg: rgba(255, 255, 255, 0.07);
+      --glass: rgba(255, 255, 255, 0.12);
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'EB Garamond', Garamond, Baskerville, 'Times New Roman', serif;
+      color: white;
+      background: radial-gradient(1200px 600px at 50% 0%, rgba(255,255,255,0.12), transparent 50%),
+                  linear-gradient(180deg, rgba(248,194,209,0.12), rgba(0,0,0,0.6)),
+                  #000;
+      /* efecto espejo suave */
+      position: relative;
+      overflow-x: hidden;
+      text-align: center; /* TODO centrado */
+    }
+
+    /* capa "espejo" con reflejos */
+    body::before, body::after {
+      content: "";
+      position: fixed;
+      left: -10%;
+      right: -10%;
+      top: -10%;
+      bottom: -10%;
+      pointer-events: none;
+      background: 
+        radial-gradient(80% 20% at 50% -10%, rgba(255,255,255,0.16), transparent 60%),
+        linear-gradient(120deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 30%, rgba(255,255,255,0.06) 60%, rgba(255,255,255,0) 100%);
+      filter: blur(6px) saturate(115%);
+      mix-blend-mode: screen;
+    }
+    body::after {
+      transform: scaleY(-1);
+      opacity: 0.25; /* sutil reflejo especular */
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 96px;
+    }
+
+    header {
+      padding: 56px 0 24px;
+    }
+
+    .logo-name {
+      font-weight: 800;
+      font-size: clamp(28px, 5vw, 56px);
+      line-height: 1.1;
+      letter-spacing: 0.5px;
+      color: var(--gold);
+      text-shadow: 0 0 10px rgba(212,175,55,0.45), 0 0 22px rgba(212,175,55,0.25);
+      -webkit-text-stroke: 0.5px rgba(0,0,0,0.25);
+      position: relative;
+      display: inline-block;
+    }
+
+    /* brillo animado */
+    .shimmer {
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shine 3.2s linear infinite;
+    }
+    @keyframes shine { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+    .tagline {
+      margin-top: 10px;
+      font-size: clamp(16px, 2.2vw, 22px);
+      color: #fff;
+      opacity: 0.9;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+    }
+
+    .cta-bar {
+      margin: 26px auto 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn { 
+      display: inline-block; 
+      padding: 14px 22px; 
+      border-radius: 14px; 
+      border: 1px solid rgba(255,255,255,0.2);
+      font-weight: 600; 
+      text-decoration: none; 
+      box-shadow: 0 8px 30px rgba(212,175,55,0.25);
+      transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+      backdrop-filter: blur(6px);
+    }
+    .btn-primary {
+      background: linear-gradient(180deg, var(--gold), #b9931f);
+      color: #0b0b0b;
+    }
+    .btn-outline {
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+    }
+    .btn:hover { transform: translateY(-2px); filter: brightness(1.06); box-shadow: 0 12px 36px rgba(212,175,55,0.35); }
+
+    .ribbon {
+      margin: 0 auto 30px;
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.28);
+      background: linear-gradient(180deg, rgba(248,194,209,0.22), rgba(248,194,209,0.05));
+      color: #fff;
+      font-size: 15px;
+      letter-spacing: 0.3px;
+    }
+
+    .section-title {
+      font-size: clamp(24px, 4.4vw, 40px);
+      color: var(--gold);
+      margin: 40px 0 16px;
+      text-shadow: 0 0 10px rgba(212,175,55,0.35);
+    }
+
+    .subtext { 
+      color: #fbe8ef; opacity: 0.9; max-width: 760px; margin: 0 auto 30px; 
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: 18px;
+    }
+    @media (min-width: 700px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (min-width: 1024px) {
+      .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 22px;
+      padding: 20px 18px 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      backdrop-filter: blur(8px);
+      text-align: center;
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      color: var(--pink);
+      text-shadow: 0 2px 10px rgba(248,194,209,0.5);
+    }
+    .card p { font-size: 17px; color: #ffffff; opacity: 0.92; }
+    .price { font-weight: 800; color: var(--gold); font-size: 20px; margin-top: 10px; }
+
+    .notice {
+      margin-top: 24px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.22);
+      display: inline-block;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+      color: #fff;
+    }
+
+    footer { margin-top: 64px; opacity: 0.9; }
+    .footer-links a { color: var(--pink); text-decoration: none; }
+    .footer-links a:hover { text-decoration: underline; }
+
+    .floating-wa { position: fixed; right: 18px; bottom: 18px; z-index: 9999; }
+    .floating-wa a {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 12px 16px; border-radius: 999px; text-decoration: none; color: #0b0b0b;
+      background: linear-gradient(180deg, #25D366, #1fa851);
+      box-shadow: 0 10px 30px rgba(31,168,81,0.45);
+      font-weight: 700; border: 1px solid rgba(0,0,0,0.15);
+    }
+
+    .divider { height: 1px; margin: 28px auto; width: min(92%, 760px); background: linear-gradient(90deg, transparent, rgba(255,255,255,0.32), transparent); }
+
+    .hero-badge { font-weight: 700; color: var(--gold); }
+
+    .contact-card {
+      max-width: 760px; margin: 0 auto; padding: 22px; border-radius: 18px; border: 1px solid rgba(255,255,255,0.22);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    }
+
+    .tel-link { color: var(--gold); text-decoration: none; font-weight: 800; }
+    .tel-link:hover { text-decoration: underline; }
+
+    .caps { text-transform: uppercase; letter-spacing: 1px; }
+  </style>
+</head>
+<body>
+  <div class="floating-wa">
+    <a href="https://wa.me/573245714518?text=%C2%A1Hola%20Magda!%20Quiero%20agendar%20mi%20cita%20de%20est%C3%A9tica%20a%20domicilio." target="_blank" rel="noopener">
+      <span>WhatsApp</span>
+      <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.11 17.36c-.27-.14-1.6-.79-1.84-.88-.24-.09-.42-.14-.6.14-.18.27-.69.88-.85 1.06-.16.18-.31.2-.58.07-.27-.14-1.12-.41-2.13-1.31-.79-.7-1.32-1.57-1.48-1.83-.16-.27-.02-.42.12-.56.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.06-.14-.6-1.44-.82-1.98-.22-.53-.44-.46-.6-.46-.16 0-.34-.02-.52-.02-.18 0-.47.07-.72.34-.24.27-.95.93-.95 2.27 0 1.34.98 2.63 1.12 2.81.14.18 1.93 2.95 4.67 4.14.65.28 1.16.45 1.56.58.65.2 1.24.17 1.71.1.52-.08 1.6-.65 1.83-1.28.22-.63.22-1.18.15-1.28-.06-.09-.24-.16-.5-.29z" fill="black"/>
+        <path d="M16.02 3C9.38 3 4 8.38 4 15.02c0 2.67.87 5.15 2.34 7.16L5 29l6.99-1.83a12.03 12.03 0 0 0 4.03.66c6.64 0 12.02-5.38 12.02-12.02C28.04 8.38 22.66 3 16.02 3zm0 21.8c-1.41 0-2.72-.36-3.87-.98l-.28-.16-4.58 1.2 1.22-4.46-.19-.29a9.808 9.808 0 0 1-1.51-5.2c0-5.44 4.44-9.88 9.88-9.88 5.44 0 9.88 4.44 9.88 9.88s-4.44 9.88-9.88 9.88z" fill="black"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="container">
+    <header>
+      <div class="ribbon caps">Estética profesional a domicilio • Lunes a Viernes</div>
+      <h1 class="logo-name shimmer">Magda Vibiana Sánchez Pinzón</h1>
+      <p class="tagline">Tu <span class="hero-badge">esteticista profesional en casa</span>. Llevo el spa a tu puerta con protocolos higiénicos, productos premium y atención 100% personalizada.</p>
+      <div class="cta-bar">
+        <a class="btn btn-primary caps" href="https://wa.me/573245714518?text=%C2%A1Hola%20Magda!%20Quiero%20agendar%20mi%20cita%20de%20est%C3%A9tica%20a%20domicilio." target="_blank" rel="noopener">Agenda tu cita</a>
+        <a class="btn btn-outline" href="tel:+573245714518">¡Llámame ya!</a>
+      </div>
+      <div class="notice">Cada masaje tiene un costo de <span class="price">$133.500 COP</span> (133,500 pesos colombianos). Atención de <strong>lunes a viernes</strong>. Cada servicio se realiza en tu hogar.</div>
+    </header>
+
+    <section id="servicios">
+      <h2 class="section-title shimmer">Servicios de Esteticista Profesional</h2>
+      <p class="subtext">Conmigo disfrutas de un tratamiento seguro, higiénico y eficaz en la comodidad de tu casa. Llevo camilla, kit de esterilización, toallas, aromas y música relajante. ¡Solo relájate y déjame consentirte!</p>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Masaje Relajante</h3>
+          <p>Maniobras suaves de deslizamiento y presión para reducir estrés, equilibrar la respiración y mejorar el descanso. Uso aceites aromáticos y técnica envolvente de cuerpo completo.</p>
+          <div class="price">$133.500 COP</div>
+        </article>
+
+        <article class="card">
+          <h3>Masaje Descontracturante</h3>
+          <p>Trabajo profundo en puntos gatillo y bandas tensas para aliviar dolor muscular por postura o entrenamiento. Estiramientos asistidos y termoterapia local.</p>
+          <div class="price">$133.500 COP</div>
+        </article>
+
+        <article class="card">
+          <h3>Limpieza Facial Profunda</h3>
+          <p>Diagnóstico de piel, limpieza, exfoliación, extracciones cuidadosas, alta frecuencia, mascarilla específica y sellado con sérums profesionales para un acabado luminoso.</p>
+          <div class="price">Consulta</div>
+        </article>
+
+        <article class="card">
+          <h3>Hidratación & Glow</h3>
+          <p>Infusión de activos (ácido hialurónico, pantenol y antioxidantes), masaje facial y drenaje para revitalizar, suavizar líneas finas y devolver jugosidad.</p>
+          <div class="price">Consulta</div>
+        </article>
+
+        <article class="card">
+          <h3>Drenaje Linfático</h3>
+          <p>Bombas y pases rítmicos para estimular el sistema linfático, desinflamar, mejorar circulación y sensación de ligereza en piernas y abdomen.</p>
+          <div class="price">Consulta</div>
+        </article>
+
+        <article class="card">
+          <h3>Exfoliación Corporal</h3>
+          <p>Pulido de la piel con scrub profesional, envoltura hidratante y masaje nutritivo para una textura sedosa y tono uniforme.</p>
+          <div class="price">Consulta</div>
+        </article>
+
+        <article class="card">
+          <h3>Depilación Profesional</h3>
+          <p>Cera tibia/roll-on según zona, técnica rápida y precisa, higiene rigurosa y post-tratamiento calmante para una piel suave por más tiempo.</p>
+          <div class="price">Consulta</div>
+        </article>
+
+        <article class="card">
+          <h3>Manicure & Pedicure Spa</h3>
+          <p>Corte y limado, cuidado de cutícula, exfoliación, masaje hidratante, esmaltado impecable y recomendaciones de cuidado en casa.</p>
+          <div class="price">Consulta</div>
+        </article>
+
+        <article class="card">
+          <h3>Lifting de Pestañas</h3>
+          <p>Levantamiento y curvatura natural con fórmula segura, nutrición con keratina vegetal y sellado para una mirada abierta sin extensiones.</p>
+          <div class="price">Consulta</div>
+        </article>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="contact-card">
+        <p class="caps">¿Lista para consentirte sin salir de casa?</p>
+        <h3 style="margin:6px 0 10px; color: var(--gold); font-size: 24px;" class="shimmer">¡Agenda tu cita ya o llámame ya!</h3>
+        <div class="cta-bar">
+          <a class="btn btn-primary caps" href="https://wa.me/573245714518?text=%C2%A1Hola%20Magda!%20Quiero%20agendar%20mi%20cita%20de%20est%C3%A9tica%20a%20domicilio." target="_blank" rel="noopener">Agenda tu cita</a>
+          <a class="btn btn-outline" href="tel:+573245714518">Llamar: 324 571 4518</a>
+        </div>
+        <p style="margin-top:10px; opacity:0.9">Atiendo de <strong>lunes a viernes</strong>. Todos los servicios se realizan en tu hogar con protocolos de higiene y bioseguridad.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p class="footer-links">© <span id="year"></span> Magda Vibiana Sánchez Pinzón — Esteticista profesional a domicilio • <a href="https://wa.me/573245714518" target="_blank" rel="noopener">WhatsApp</a> • <a class="tel-link" href="tel:+573245714518">Tel: 324 571 4518</a></p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
